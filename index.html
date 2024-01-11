@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://kit.fontawesome.com/04f74d1820.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body class="h-screen scroll-smooth">
+    <div class="flex flex-col">
+        <header class="flex flex-wrap items-center justify-between w-10/12 p-4 m-auto max-w-7xl">
+            <a href="#" class="flex items-center px-4 py-2 text-3xl font-extrabold bg-purple-300 rounded">
+                Urvish.Dev
+            </a>
+            <button id="menuButton" class="flex ml-auto md:hidden" onclick="myFunction()">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+            <nav class="flex-1 hidden gap-3 ml-4 md:flex">
+                <a href="" class="hover:font-bold">Collection</a>
+                <a href="" class="hover:font-bold">Men</a>
+                <a href="" class="hover:font-bold">Women</a>
+                <a href="" class="hover:font-bold">About</a>
+                <a href="" class="hover:font-bold">Contact</a>
+            </nav>
+            <div class="hidden ml-auto md:block">
+                <a href="#" class="px-2 hover:font-bold"><i class="fa-solid fa-cart-shopping fa-beat fa-xl"></i></a>
+                <a href="#" class="px-2 hover:font-bold"><i class="fa-solid fa-user fa-2xl"></i></a>
+            </div>
+        </header>
+
+        <main id="Home" class="flex flex-col md:flex-row">
+            <!-- main images -->
+            <section class="flex items-center justify-center flex-1">
+                <div class="grid grid-cols-4 gap-4 p-4 md:w-3/5 max-md:w-80">
+                    <div id="image_main"
+                        class="flex items-center justify-center text-white bg-red-300 rounded-lg col-span-full aspect-square"
+                        onclick="openImageDialog('image_main')">
+                        <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/39c8f04c-e1e8-4a7b-8ce1-b827e969293b/in-season-tr-13-workout-shoes-BDTlPf.png"
+                            alt="">
+                    </div>
+                    <div id="image1"
+                        class="flex items-center justify-center overflow-hidden text-white bg-red-300 rounded-lg aspect-square"
+                        onclick="changeMainImage('image1')">
+                        <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/39c8f04c-e1e8-4a7b-8ce1-b827e969293b/in-season-tr-13-workout-shoes-BDTlPf.png"
+                            alt="">
+                    </div>
+                    <div id="image2"
+                        class="flex items-center justify-center overflow-hidden text-white bg-red-300 rounded-lg aspect-square"
+                        onclick="changeMainImage('image2')">
+                        <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/cea2a05e-a589-4159-8a77-c70d3d31f777/in-season-tr-13-workout-shoes-BDTlPf.png"
+                            alt="">
+                    </div>
+                    <div id="image3"
+                        class="flex items-center justify-center overflow-hidden text-white bg-red-300 rounded-lg aspect-square"
+                        onclick="changeMainImage('image3')">
+                        <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/aaab82a0-3051-4335-aae0-11ff36618d58/in-season-tr-13-workout-shoes-BDTlPf.png"
+                            alt="">
+                    </div>
+                    <div id="image4"
+                        class="flex items-center justify-center overflow-hidden text-white bg-red-300 rounded-lg aspect-square"
+                        onclick="changeMainImage('image4')">
+                        <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/63c27f5a-7ed8-4a3b-95e3-18e13c21eb61/in-season-tr-13-workout-shoes-BDTlPf.png"
+                            alt="">
+                    </div>
+                </div>
+            </section>
+
+            <dialog id="imageDialog" class="h-screen">
+                <img id="dialogImage" src="" alt="Dialog Image" class="h-[calc(100%-20%)] ">
+                <button onclick="closeImageDialog()">Close</button>
+            </dialog>
+
+            <!-- Description and pricing -->
+            <section class="flex items-center justify-center flex-1 ">
+                <div class="w-3/4">
+                    <p class="my-2 text-sm font-bold text-orange-600 ">SNEAKERS COMPANY</p>
+                    <h2 class="my-2 text-4xl font-extrabold ">Fall Limited Edition Sneakers</h2>
+                    <p class="my-2 ">These high-profile sneakers are your perfect casual wear companion. Featuring a
+                        durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
+                    <div class="my-6">
+                        <div class="flex items-center gap-6">
+                            <p class="inline text-3xl font-bold" id="price"></p>
+                            <p><span
+                                    class="inline px-1 text-lg font-bold text-orange-600 bg-orange-200 rounded-lg">50%</span>
+                            </p>
+                        </div>
+                        <p class="font-bold text-gray-400"><strike id="strike"></strike></p>
+                    </div>
+                    <div class="flex items-center gap-10">
+                        <div class="flex gap-8 px-4 py-1.5 bg-gray-200 rounded-md">
+                            <div class="inline-block font-extrabold text-orange-400 cursor-pointer"
+                                onclick="decreaseQty()">-</div>
+                            <div class="inline-block font-bold cursor-default" id="quantity"></div>
+                            <div class="inline-block font-extrabold text-orange-400 cursor-pointer"
+                                onclick="increaseQty()">+</div>
+                        </div>
+                        <div id="cart"
+                            class="flex p-2 bg-orange-500 rounded-md hover:shadow-orange-400 hover:shadow-lg">
+                            <p class="inline-block px-1"><i class="fa-solid fa-cart-shopping"
+                                    style="color: #ffffff;"></i>
+                            </p>
+                            <p class="inline-block px-1 text-white">Add to Cart</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="m-auto my-10 font-mono text-sm font-extrabold">
+            Urvish Patel
+        </footer>
+    </div>
+
+    <script>
+
+        let price = 125;
+        let strike = 250;
+        let QtyValue = 1;
+        let selectedCountry = 'India'; // Change this to the selected country
+
+        function updateDisplay() {
+            const quantityElement = document.getElementById('quantity');
+            const priceElement = document.getElementById('price');
+            const strikeElement = document.getElementById('strike');
+
+            quantityElement.innerText = QtyValue;
+
+            const formattedPrice = formatCurrency(QtyValue * price, selectedCountry);
+            const formattedStrike = formatCurrency(strike * QtyValue, selectedCountry);
+
+            priceElement.innerText = formattedPrice;
+            strikeElement.innerText = formattedStrike;
+        }
+
+        function increaseQty() {
+            QtyValue++;
+            updateDisplay();
+        }
+
+        function decreaseQty() {
+            if (QtyValue > 1) {
+                QtyValue--;
+                updateDisplay();
+            } else {
+                alert("Be real dude.... Quantity cannot be less than 1 !");
+            }
+        }
+
+        function formatCurrency(amount, country) {
+            const currencyMultipliers = {
+                'USA': 1,     // Dollar
+                'India': 83,   // Rupee (multiply by 83)
+                'Euro': 0.91   // Euro (multiply by 0.91)
+                // Add more countries and their multipliers as needed
+            };
+
+            const currencyMultiplier = currencyMultipliers[country] || 1; // Default to 1 if country not found
+
+            // Multiply the amount by the currency multiplier
+            const convertedAmount = amount * currencyMultiplier;
+
+            return `${getCurrencySymbol(country)}${convertedAmount.toFixed(2)}`;
+        }
+
+        function getCurrencySymbol(country) {
+            const currencySymbols = {
+                'USA': '$',
+                'India': '₹',
+                'Euro': '€',
+                // Add more countries and their symbols as needed
+            };
+
+            return currencySymbols[country] || '$'; // Default to dollar if country not found
+        }
+
+        updateDisplay();
+
+        function changeMainImage(imageId) {
+            var mainImage = document.getElementById('image_main');
+            var clickedImage = document.getElementById(imageId);
+
+            mainImage.querySelector('img').src = clickedImage.querySelector('img').src;
+        }
+
+
+        function openImageDialog(imageId) {
+            var imageUrl = document.getElementById(imageId).querySelector('img').src;
+            var dialogImage = document.getElementById('dialogImage');
+            dialogImage.src = imageUrl;
+
+            var imageDialog = document.getElementById('imageDialog');
+            imageDialog.showModal();
+        }
+
+        function closeImageDialog() {
+            var imageDialog = document.getElementById('imageDialog');
+            imageDialog.close();
+        }
+    </script>
+</body>
+
+</html>
